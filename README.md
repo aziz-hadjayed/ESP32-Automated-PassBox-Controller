@@ -3,7 +3,7 @@
 ![ESP32](https://img.shields.io/badge/ESP32-000000?style=for-the-badge&logo=espressif&logoColor=white)
 ![Node-RED](https://img.shields.io/badge/Node--RED-8F0000?style=for-the-badge&logo=node-red&logoColor=white)
 ![MQTT](https://img.shields.io/badge/MQTT-660066?style=for-the-badge&logo=mqtt&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
+![Broker](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 
 Système IoT complet pour l'automatisation d'un sas de décontamination (Pass-Box) destiné aux environnements pharmaceutiques, laboratoires et salles blanches. Basé sur ESP32 avec communication MQTT via HiveMQ, monitoring temps réel Node-RED, et système d'alertes email.
 
@@ -112,7 +112,7 @@ Système IoT complet pour l'automatisation d'un sas de décontamination (Pass-Bo
 | Boutons poussoirs | 6 | Contrôles physiques |
 | Résistances pull-up | 6 | 10kΩ (ou utiliser pull-up internes) |
 | Breadboard | 1 | Pour prototypage |
-| Câbles Dupont | - | Connexions |
+| Câbles Dupont | 18 | Connexions |
 | Alimentation 5V | 1 | Pour ESP32 |
 
 ### Spécifications
@@ -174,15 +174,15 @@ GPIO 22──┤ SCL ──────────┐ │     │
 
 ### 1. Prérequis
 
-- [ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/) v4.4 ou supérieur
-- [Node-RED](https://nodered.org/docs/getting-started/) installé
-- Compte [HiveMQ Cloud](https://www.hivemq.com/mqtt-cloud-broker/) (gratuit)
+- [ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/v5.5.1/esp32/get-started/index.html) v5.5.1 ou supérieur
+- [Node-RED](https://nodered.org/docs/getting-started/local) installé
+- Compte [HiveMQ Cloud](https://www.hivemq.com/demos/websocket-client/) (gratuit)
 
 ### 2. Cloner le repository
 
 ```bash
-git clone https://github.com/votre-username/IoT-PassBox-Sterilization-System.git
-cd IoT-PassBox-Sterilization-System
+git clone https://github.com/aziz-hadjayed/ESP32-Automated-PassBox-Controller.git
+cd ESP32-Automated-PassBox-Controller
 ```
 
 ### 3. Configuration WiFi et MQTT
@@ -218,7 +218,7 @@ idf.py -p /dev/ttyUSB0 monitor
 
 ```bash
 # Installer Node-RED (si pas déjà fait)
-npm install -g --unsafe-perm node-red
+sudo npm install -g --unsafe-perm node-red
 
 # Démarrer Node-RED
 node-red
@@ -261,10 +261,26 @@ Le code utilise un module LCD I2C avec PCF8574 :
 #define I2C_SDA         21
 #define I2C_SCL         22
 #define I2C_FREQ_HZ     100000
-#define PCF8574_ADDR    0x27   // Adresse I2C (vérifier avec i2c-scanner)
+#define PCF8574_ADDR    0x27   // Adresse I2C (vérifier avec i2c-scanner) 
 ```
+Explication de l'adresse I2C 0x27 :
+Le PCF8574 utilise une adresse I2C de 7 bits formée ainsi :
+┌─────────────────────────────────────────────────────────┐
+│  Bit 6-4  │  Bit 3  │  Bit 2-0  │  Adresse finale      │
+│  (Fixe)   │  (Fixe) │  (A2-A0)  │  (7 bits)            │
+├───────────┼─────────┼───────────┼──────────────────────┤
+│   0 1 0   │    0    │  1 1 1    │  0x27 (0b0100111)    │
+└─────────────────────────────────────────────────────────┘
 
-Si votre module utilise une autre adresse (0x3F par exemple), modifier `PCF8574_ADDR`.
+Bits 6-4 : 010 (fixé par le fabricant)
+Bit 3    : 0   (fixé par le fabricant)
+Bits 2-0 : A2 A1 A0 (configurables via broches du module)
+Configuration des broches A0, A1, A2 :
+
+Si A0, A1, A2 non connectés (laissés flottants) → Pull-up interne → 111 en binaire
+Adresse finale : 010 0 111 = 0x27 en hexadécimal
+
+Si votre module utilise une autre adresse , modifier `PCF8574_ADDR`.
 
 ### Configuration Email (Node-RED)
 
