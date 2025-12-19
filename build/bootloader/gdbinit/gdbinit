@@ -1,0 +1,2 @@
+source /home/aziz/Projet_Pass-box/build/bootloader/gdbinit/symbols
+source /home/aziz/Projet_Pass-box/build/bootloader/gdbinit/connect
