@@ -264,21 +264,6 @@ Le code utilise un module LCD I2C avec PCF8574 :
 #define PCF8574_ADDR    0x27   // Adresse I2C (vérifier avec i2c-scanner) 
 ```
 Explication de l'adresse I2C 0x27 :
-Le PCF8574 utilise une adresse I2C de 7 bits formée ainsi :
-┌─────────────────────────────────────────────────────────┐
-│  Bit 6-4  │  Bit 3  │  Bit 2-0  │  Adresse finale      │
-│  (Fixe)   │  (Fixe) │  (A2-A0)  │  (7 bits)            │
-├───────────┼─────────┼───────────┼──────────────────────┤
-│   0 1 0   │    0    │  1 1 1    │  0x27 (0b0100111)    │
-└─────────────────────────────────────────────────────────┘
-
-Bits 6-4 : 010 (fixé par le fabricant)
-Bit 3    : 0   (fixé par le fabricant)
-Bits 2-0 : A2 A1 A0 (configurables via broches du module)
-
-Bits 6-4 : 010 (fixé par le fabricant)
-Bit 3    : 0   (fixé par le fabricant)
-Bits 2-0 : A2 A1 A0 (configurables via broches du module)
 Configuration des broches A0, A1, A2 :
 
 Si A0, A1, A2 non connectés (laissés flottants) → Pull-up interne → 111 en binaire
