@@ -1,4 +1,4 @@
-# 🔬 IoT Pass-Box Sterilization System
+# IoT Pass-Box Sterilization System
 
 ![ESP32](https://img.shields.io/badge/ESP32-000000?style=for-the-badge&logo=espressif&logoColor=white)
 ![Node-RED](https://img.shields.io/badge/Node--RED-8F0000?style=for-the-badge&logo=node-red&logoColor=white)
@@ -7,7 +7,7 @@
 
 Système IoT complet pour l'automatisation d'un sas de décontamination (Pass-Box) destiné aux environnements pharmaceutiques, laboratoires et salles blanches. Basé sur ESP32 avec communication MQTT via HiveMQ, monitoring temps réel Node-RED, et système d'alertes email.
 
-## 📋 Table des matières
+## Table des matières
 
 - [Caractéristiques](#-caractéristiques)
 - [Architecture](#-architecture)
@@ -24,7 +24,7 @@ Système IoT complet pour l'automatisation d'un sas de décontamination (Pass-Bo
 - [Dépannage](#-dépannage)
 - [Licence](#-licence)
 
-## ✨ Caractéristiques
+## Caractéristiques
 
 ### Fonctionnalités principales
 
@@ -49,7 +49,7 @@ Système IoT complet pour l'automatisation d'un sas de décontamination (Pass-Bo
 - ✅ Autorisation porte stérile uniquement en fin de cycle
 - ✅ Protection mutex pour accès concurrentiel à l'écran LCD
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -101,7 +101,7 @@ Système IoT complet pour l'automatisation d'un sas de décontamination (Pass-Bo
                    └─────────────────────────────────┘
 ```
 
-## 🔧 Matériel requis
+## Matériel requis
 
 ### Composants principaux
 
@@ -121,7 +121,7 @@ Système IoT complet pour l'automatisation d'un sas de décontamination (Pass-Bo
 - **LCD** : Module I2C PCF8574 (adresse 0x27)
 - **Alimentation** : 5V USB ou externe
 
-## 📐 Schéma de câblage
+## Schéma de câblage
 
 ### GPIO Mapping
 
@@ -170,7 +170,7 @@ GPIO 22──┤ SCL ──────────┐ │     │
                     └───────────┘
 ```
 
-## 💻 Installation
+## Installation
 
 ### 1. Prérequis
 
@@ -250,7 +250,7 @@ Add newline: true
 Create dir if not exist: true
 ```
 
-## ⚙️ Configuration
+## Configuration
 
 ### Configuration I2C LCD
 
@@ -295,7 +295,7 @@ Password: mot-de-passe-application
 Sujet: Rapport CSV — [nombre] événements
 ```
 
-⚠️ **Gmail** : Utiliser un [mot de passe d'application](https://support.google.com/accounts/answer/185833)
+**Gmail** : Utiliser un [mot de passe d'application](https://support.google.com/accounts/answer/185833)
 
 ### Configuration CSV
 
@@ -311,7 +311,7 @@ timestamp,topic,valeur
 2025-12-18T23:26:35.256Z,urgence,true
 ```
 
-## 🔄 Cycle de stérilisation
+## Cycle de stérilisation
 
 Le système exécute un cycle de décontamination en 7 étapes :
 
@@ -392,7 +392,7 @@ Le système exécute un cycle de décontamination en 7 étapes :
 └─────────────────┘
 ```
 
-## 📡 Topics MQTT
+## Topics MQTT
 
 ### Topics de publication (ESP32 → Node-RED)
 
@@ -431,7 +431,7 @@ Topic: cmd/cycle/depart
 Payload: "true"
 ```
 
-## 📊 Dashboard Node-RED
+## Dashboard Node-RED
 
 ### Composants du dashboard
 
@@ -474,7 +474,7 @@ Le dashboard Node-RED comprend :
 http://localhost:1880/ui
 ```
 
-## 🔒 Sécurité et inter-verrouillage
+## Sécurité et inter-verrouillage
 
 ### Règles de sécurité
 
@@ -515,7 +515,7 @@ void lcd_show_mutex(const char *l1, const char *l2)
 }
 ```
 
-## 🚨 Alertes et monitoring
+## Alertes et monitoring
 
 ### Système d'emails automatiques
 
@@ -554,12 +554,12 @@ Système de supervision IoT
 Déclenché **manuellement** via le bouton dans le dashboard Node-RED.
 
 **Fonctionnalités du rapport :**
-- 📁 **Lecture automatique** du fichier CSV local
-- 📊 **Analyse complète** des données
-- 📈 **Statistiques** : nombre total d'événements, période couverte
-- 🔢 **Répartition par topic** : comptage des occurrences
-- 📌 **15 derniers événements** détaillés avec timestamp, topic et valeur
-- ⏰ **Date/heure de génération** du rapport
+- **Lecture automatique** du fichier CSV local
+- **Analyse complète** des données
+- **Statistiques** : nombre total d'événements, période couverte
+- **Répartition par topic** : comptage des occurrences
+- **15 derniers événements** détaillés avec timestamp, topic et valeur
+- **Date/heure de génération** du rapport
 
 **Exemple de rapport :**
 ```
@@ -569,15 +569,15 @@ Sujet: Rapport CSV — 1687 événements
 
 Bonjour,
 
-📊 RAPPORT AUTOMATIQUE - ANALYSE FICHIER CSV
+RAPPORT AUTOMATIQUE - ANALYSE FICHIER CSV
 
-📅 Date de génération : vendredi 19 décembre 2025 à 00:26:38 UTC+1
-📊 Total d'événements : 1687
-⏰ Période couverte : 2025-12-14T02:14:57.027Z → 2025-12-18T23:26:35.256Z
+Date de génération : vendredi 19 décembre 2025 à 00:26:38 UTC+1
+Total d'événements : 1687
+Période couverte : 2025-12-14T02:14:57.027Z → 2025-12-18T23:26:35.256Z
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📊 RÉPARTITION PAR TOPIC
+RÉPARTITION PAR TOPIC
 
 📌 porte/sterile : 644 occurrences
 📌 porte/contaminee : 644 occurrences
@@ -587,7 +587,7 @@ Bonjour,
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📋 DERNIERS 15 ÉVÉNEMENTS
+DERNIERS 15 ÉVÉNEMENTS
 
 [1673] 2025-12-18T23:12:43.359Z
 📌 Topic : cycle/etape
@@ -605,7 +605,7 @@ Bonjour,
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🔍 RÉSUMÉ RAPIDE :
+RÉSUMÉ RAPIDE :
 
 • Événements analysés : 1687
 • Topics différents : 5
@@ -662,7 +662,7 @@ I (15346) Pass-Box: --- Etape 2: Arret air ---
 W (17346) Pass-Box: INTER-VERROUILLAGE: Porte contaminée ouverte!
 ```
 
-## 🎮 Utilisation
+## Utilisation
 
 ### Démarrage du système
 
@@ -773,7 +773,7 @@ grep "urgence" /home/user/.node-red/mqtt_log.csv
    - Statistiques par topic
    - 15 derniers événements
 
-## 🔧 Dépannage
+## Dépannage
 
 ### Problème : LCD ne s'allume pas
 
@@ -876,7 +876,7 @@ gpio_config_t io_conf = {
 };
 ```
 
-## 📁 Structure du projet
+## Structure du projet
 
 ```
 IoT-PassBox-Sterilization-System/
@@ -910,7 +910,7 @@ IoT-PassBox-Sterilization-System/
 └── README.md                  # Ce fichier
 ```
 
-## 🤝 Contribution
+## Contribution
 
 Les contributions sont les bienvenues ! Pour contribuer :
 
@@ -920,7 +920,7 @@ Les contributions sont les bienvenues ! Pour contribuer :
 4. Push vers la branche (`git push origin feature/amelioration`)
 5. Ouvrir une Pull Request
 
-## 📝 TODO / Améliorations futures
+## TODO / Améliorations futures
 
 - [ ] Ajout capteur DHT11 pour température/humidité réelles
 - [ ] Support TLS/SSL pour MQTT (sécurité renforcée)
@@ -931,27 +931,14 @@ Les contributions sont les bienvenues ! Pour contribuer :
 - [ ] Calibration automatique des durées d'étape
 - [ ] Support multi-langues (FR/EN/AR)
 
-## 📄 Licence
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
-
-```
-MIT License
-
-Copyright (c) 2025 [Votre Nom]
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction...
-```
-
-## 👨‍💻 Auteur
+## Auteur
 
 **Hadj Ayed Aziz**
 - Email: hadjayedaziz@gmail.com
 - GitHub: [mohamed aziz hadjayed](https://github.com/aziz-hadjayed)
 
-## 🙏 Remerciements
+## Remerciements
 
 - ESP-IDF Framework par Espressif
 - Node-RED Community
@@ -962,4 +949,3 @@ in the Software without restriction...
 
 ⭐ **Si ce projet vous a été utile, n'hésitez pas à lui donner une étoile !**
 
-📧 **Questions ?** Ouvrir une [issue](https://github.com/votre-username/IoT-PassBox-Sterilization-System/issues)
