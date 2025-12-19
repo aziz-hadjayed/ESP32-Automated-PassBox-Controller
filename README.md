@@ -275,6 +275,10 @@ Le PCF8574 utilise une adresse I2C de 7 bits formée ainsi :
 Bits 6-4 : 010 (fixé par le fabricant)
 Bit 3    : 0   (fixé par le fabricant)
 Bits 2-0 : A2 A1 A0 (configurables via broches du module)
+
+Bits 6-4 : 010 (fixé par le fabricant)
+Bit 3    : 0   (fixé par le fabricant)
+Bits 2-0 : A2 A1 A0 (configurables via broches du module)
 Configuration des broches A0, A1, A2 :
 
 Si A0, A1, A2 non connectés (laissés flottants) → Pull-up interne → 111 en binaire
