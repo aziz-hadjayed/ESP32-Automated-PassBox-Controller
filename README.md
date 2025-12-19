@@ -437,31 +437,26 @@ Payload: "true"
 
 Le dashboard Node-RED comprend :
 
-1. **Indicateurs DHT11** (température/humidité)
-   - Affichage des conditions ambiantes
-   - Température (°C)
-   - Humidité relative (%)
-
-2. **Contrôles**
+1. **Contrôles**
    - Bouton **Départ/Arrêt** du cycle
    - Toggle **Urgence**
 
-3. **États des portes**
+2. **États des portes**
    - LED Porte stérile (Rouge/Vert)
    - LED Porte contaminée (Rouge/Vert)
 
-4. **Monitoring cycle**
+3. **Monitoring cycle**
    - Étape actuelle
    - Progression
    - Temps écoulé
 
-5. **Système de logging CSV**
+4. **Système de logging CSV**
    - Enregistrement automatique temps réel de tous les événements MQTT
-   - Fichier CSV local sur le serveur Node-RED
+   - Fichier CSV local sur le serveur
    - Horodatage précis de chaque événement
    - Format : `timestamp, topic, valeur`
 
-6. **Système d'emails automatiques**
+5. **Système d'emails automatiques**
    - **Email d'alerte urgence** : envoi immédiat lors d'activation de l'arrêt d'urgence
    - **Email de rapport** : sur demande via bouton dashboard
      - Lecture automatique du fichier CSV
@@ -469,7 +464,7 @@ Le dashboard Node-RED comprend :
      - Répartition par topic
      - 15 derniers événements détaillés
 
-7. **Historique**
+6. **Historique**
    - Visualisation des événements en temps réel
    - Debug MQTT
 
@@ -954,7 +949,7 @@ in the Software without restriction...
 
 **Hadj Ayed Aziz**
 - Email: hadjayedaziz@gmail.com
-- GitHub: [@votre-username](https://github.com/votre-username)
+- GitHub: [mohamed aziz hadjayed](https://github.com/aziz-hadjayed)
 
 ## 🙏 Remerciements
 
