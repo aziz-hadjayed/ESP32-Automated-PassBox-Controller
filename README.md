@@ -3,7 +3,7 @@
 ![ESP32](https://img.shields.io/badge/ESP32-000000?style=for-the-badge&logo=espressif&logoColor=white)
 ![Node-RED](https://img.shields.io/badge/Node--RED-8F0000?style=for-the-badge&logo=node-red&logoColor=white)
 ![MQTT](https://img.shields.io/badge/MQTT-660066?style=for-the-badge&logo=mqtt&logoColor=white)
-![Broker](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
+![Broker](https://img.shields.io/badge/HiveMQ-FFB800?style=for-the-badge&logo=hivemq&logoColor=black)
 
 Système IoT complet pour l'automatisation d'un sas de décontamination (Pass-Box) destiné aux environnements pharmaceutiques, laboratoires et salles blanches. Basé sur ESP32 avec communication MQTT via HiveMQ, monitoring temps réel Node-RED, et système d'alertes email.
 
