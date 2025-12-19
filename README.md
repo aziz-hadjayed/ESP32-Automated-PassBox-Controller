@@ -428,7 +428,7 @@ Payload: "true"
 
 // Commande depuis Node-RED
 Topic: cmd/cycle/depart
-Payload: "ON"
+Payload: "true"
 ```
 
 ## 📊 Dashboard Node-RED
